@@ -15,6 +15,7 @@ public class twoDimensionalStateController : MonoBehaviour
     //increase performace
     int VelocityZHash;
     int VelocityXHash;
+    int WaveHash;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class twoDimensionalStateController : MonoBehaviour
         animator = GetComponent<Animator>();
         VelocityZHash = Animator.StringToHash("Velocity Z");
         VelocityXHash = Animator.StringToHash("Velocity X");
+        WaveHash = Animator.StringToHash("Wave");
     }
 
 
@@ -160,9 +162,9 @@ public class twoDimensionalStateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
-        
+
+
 
         //get input from the player
         bool forwardPressed = Input.GetKey(KeyCode.W);
@@ -174,11 +176,23 @@ public class twoDimensionalStateController : MonoBehaviour
         float currentMaxVelocity = runPressed ? maximumRunVelocity : maximumWalkVelocity;
 
         //handles changes in velocity
-        changeVelocity(forwardPressed,leftPressed, rightPressed, runPressed, currentMaxVelocity);
+        changeVelocity(forwardPressed, leftPressed, rightPressed, runPressed, currentMaxVelocity);
         lockOrResetVelocity(forwardPressed, leftPressed, rightPressed, runPressed, currentMaxVelocity);
 
         //set parameters to local variable values
         animator.SetFloat(VelocityZHash, velocityZ);
         animator.SetFloat(VelocityXHash, velocityX);
+
+        /* if (Input.GetKeyDown(KeyCode.E))
+         {
+             Debug.Log("Wave triggered on: " + animator);
+             animator.SetTrigger("Wave");
+         } */
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            animator.SetTrigger("Wave");
+            Debug.Log("Wave triggered on: " + animator);
+        }
     }
 }
