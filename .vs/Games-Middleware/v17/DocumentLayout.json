@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|c:\\users\\oracle\\desktop\\games-middleware\\assets\\twodimensionalstatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|solutionrelative:assets\\twodimensionalstatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|c:\\users\\oracle\\desktop\\games-middleware\\assets\\animationstatecontrollerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|solutionrelative:assets\\animationstatecontrollerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AnimationStateControllerScript.cs",
+              "DocumentMoniker": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\AnimationStateControllerScript.cs",
+              "RelativeDocumentMoniker": "Assets\\AnimationStateControllerScript.cs",
+              "ToolTip": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\AnimationStateControllerScript.cs",
+              "RelativeToolTip": "Assets\\AnimationStateControllerScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T16:47:40.351Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +41,7 @@
               "RelativeDocumentMoniker": "Assets\\twoDimensionalStateController.cs",
               "ToolTip": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\twoDimensionalStateController.cs",
               "RelativeToolTip": "Assets\\twoDimensionalStateController.cs",
-              "ViewState": "AgIAAKwAAAAAAAAAAAAAAMMAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-04T16:35:52.095Z",
               "EditorCaption": ""

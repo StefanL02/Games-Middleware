@@ -1,0 +1,115 @@
+# =============== #
+# UNITY GENERATED #
+# =============== #
+
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+UserSettings/
+MemoryCaptures/
+
+# Crash Reports
+SysInfo.txt
+*.stacktrace
+
+# Prevent massive .dylib / .dll / .so caches being uploaded
+Library/PackageCache/
+Library/Bee/
+
+# ============== #
+# RIDER / VS / VS CODE #
+# ============== #
+
+.vs/
+.vscode/
+.idea/
+
+# Rider / VS solution files
+*.csproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+
+# Visual Studio Code workspace settings
+*.code-workspace
+
+# =============== #
+# UNITY AUTO FILES #
+# =============== #
+
+# Unity meta files (keep!)
+# *.meta — DO NOT ignore
+
+# Built game executables
+*.exe
+*.apk
+*.aab
+*.xcodeproj/
+
+# Unity Cloud / Collaborate
+*.collabignore
+
+# =============== #
+# TEXTMESH PRO     #
+# =============== #
+
+TextMesh Pro/Examples & Extras/
+
+# =============== #
+# BUILD SYSTEM     #
+# =============== #
+
+[Bb]uildArtifacts/
+[Bb]uildReports/
+[Bb]uilds/
+*.apk
+*.aab
+*.ipa
+*.unitypackage
+
+# =============== #
+# ASSET STORE      #
+# =============== #
+
+Assets/AssetStoreTools*
+
+# =============== #
+# PACKAGES         #
+# =============== #
+
+# Ignore automatically generated package lock (optional)
+Packages/packages-lock.json
+
+# =============== #
+# OTHER            #
+# =============== #
+
+# Logs
+*.log
+
+# Crash dumps
+*.dmp
+
+# Thumbnails
+[Tt]humb*
+[Tt]humbnail*
+
+# JetBrains Workspaces
+*.DotSettings.user
+
+# Timestamps
+*.pidb
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.pidb.meta
+
+# Unity Collaborate
+.collab/

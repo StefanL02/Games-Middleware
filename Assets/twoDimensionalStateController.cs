@@ -5,17 +5,25 @@ using UnityEngine;
 public class twoDimensionalStateController : MonoBehaviour
 {
     Animator animator;
-    float velocityZ = 0.0f;
-    float velocityX = 0.0f;
+    [SerializeField] public CharacterController characterController;
+    
+    [HideInInspector] public float velocityZ = 0.0f;
+    [HideInInspector] public float velocityX = 0.0f;
     public float acceleration = 2.0f;
     public float deceleration = 2.0f;
     public float maximumWalkVelocity = 0.5f;
     public float maximumRunVelocity = 2.0f;
-
+    public float gravity = -9.81f;
+    
+    public bool IsRunning { get; private set; }
+    
     //increase performace
     int VelocityZHash;
     int VelocityXHash;
     int WaveHash;
+
+    // Velocity Y for gravity
+    private float velocityY = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -182,6 +190,27 @@ public class twoDimensionalStateController : MonoBehaviour
         //set parameters to local variable values
         animator.SetFloat(VelocityZHash, velocityZ);
         animator.SetFloat(VelocityXHash, velocityX);
+        
+        //Moves the character by script
+        if (characterController.isGrounded)
+        {
+            velocityY = 0f;
+        }
+        else
+        {
+            velocityY += gravity * Time.deltaTime;
+        }
+
+        // Calculate movement with CharacterController
+        Vector3 movement = new Vector3(velocityX, velocityY, velocityZ);
+        
+        // Transform direction to world space if needed
+        movement = transform.TransformDirection(movement);
+        
+        // Apply movement with CharacterController
+        characterController.Move(movement * Time.deltaTime);
+
+        IsRunning = runPressed && (forwardPressed || leftPressed || rightPressed);
 
         /* if (Input.GetKeyDown(KeyCode.E))
          {
