@@ -90,6 +90,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Demo Chat\Code\Utilities\ChatIdCheckerUI.cs" />
     <Compile Include="Assets\Script\Multiplayer\NetworkManager.cs" />
     <Compile Include="Assets\Script\Balls Scripts\IPhysical.cs" />
+    <Compile Include="Assets\Script\Player Scripts\VoiceCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />

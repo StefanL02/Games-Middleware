@@ -17,211 +17,86 @@ public class twoDimensionalStateController : MonoBehaviour
     
     public bool IsRunning { get; private set; }
     
-    //increase performace
+    public FootstepManager leftFootstepManager;
+    public FootstepManager rightFootstepManager;
+    
     int VelocityZHash;
     int VelocityXHash;
-    int WaveHash;
-
-    // Velocity Y for gravity
     private float velocityY = 0f;
 
-    // Start is called before the first frame update
+    // --- OVERRIDE SYSTEM ---
+    // Allows other scripts to "Press W/A/S/D" virtually
+    public bool inputOverride = false;
+    public float overrideVertical = 0f;   
+    public float overrideHorizontal = 0f; 
+    public bool overrideRun = false;
+
     void Start()
     {
-        //search the gameobject this script is attached to and get the animator component
         animator = GetComponent<Animator>();
         VelocityZHash = Animator.StringToHash("Velocity Z");
         VelocityXHash = Animator.StringToHash("Velocity X");
-        WaveHash = Animator.StringToHash("Wave");
     }
 
+    public void StepLeft() => leftFootstepManager?.Step();
+    public void StepRight() => rightFootstepManager?.Step();
 
-    void changeVelocity(bool forwardPressed, bool leftPressed, bool rightPressed, bool runPressed, float currentMaxVelocity)
-    {//if player presses forward, increase velocity in Z direction
-        if (forwardPressed && velocityZ < currentMaxVelocity)
-        {
-            velocityZ += Time.deltaTime * acceleration;
-        }
-
-        //increase velocity in left direction
-        if (leftPressed && velocityX > -currentMaxVelocity)
-        {
-            velocityX -= Time.deltaTime * acceleration;
-        }
-
-        //increase velocity in right direction
-        if (rightPressed && velocityX < currentMaxVelocity)
-        {
-            velocityX += Time.deltaTime * acceleration;
-        }
-
-        //decrease velocity Z
-        if (!forwardPressed && velocityZ > 0.0f)
-        {
-            velocityZ -= Time.deltaTime * deceleration;
-        }
-
-        //reset velocity Z
-        if (!forwardPressed && velocityZ <= 0.0f)
-        {
-            velocityZ = 0.0f;
-        }
-
-        //increase velocityX if left is not pressed and velocityX <0
-        if (!leftPressed && velocityX < 0.0f)
-        {
-            velocityX += Time.deltaTime * deceleration;
-        }
-
-        //decrease velocityX if right is pressed and velocityX >0
-        if (!rightPressed && velocityX > 0.0f)
-        {
-            velocityX -= Time.deltaTime * deceleration;
-        }
-    }
-
-
-    //handles reset and locking of velocity
-    void lockOrResetVelocity(bool forwardPressed, bool leftPressed, bool rightPressed, bool runPressed, float currentMaxVelocity)
-    {
-        //reset velocityX
-        if (!leftPressed && !rightPressed && velocityX != 0.0f && (velocityX > -0.05f && velocityX < 0.05f))
-        {
-            velocityX = 0.0f;
-        }
-
-        //lock forward
-        if (forwardPressed && runPressed && velocityZ > currentMaxVelocity)
-        {
-            velocityZ = currentMaxVelocity;
-        }
-
-        //decelerate to the maximum walk velocity
-        else if (forwardPressed && velocityZ > currentMaxVelocity)
-        {
-            velocityZ -= Time.deltaTime * deceleration;
-            //round to the currentMaxVelocity if within offset
-            if (velocityZ > currentMaxVelocity && velocityZ < (currentMaxVelocity - 0.05f))
-            {
-                velocityZ = currentMaxVelocity;
-            }
-        }
-        //round to the currentMaxVelocity if within offset
-        else if (forwardPressed && velocityZ < currentMaxVelocity && velocityZ > (currentMaxVelocity - 0.05f))
-        {
-            velocityZ = currentMaxVelocity;
-        }
-
-        //lock left
-        if (leftPressed && runPressed && velocityX < -currentMaxVelocity)
-        {
-            velocityX = -currentMaxVelocity;
-        }
-
-        //decelerate to the maximum walk velocity
-        else if (leftPressed && velocityX < -currentMaxVelocity)
-        {
-            velocityX += Time.deltaTime * deceleration;
-            //round to the currentMaxVelocity if within offset
-            if (velocityX < -currentMaxVelocity && velocityX > (-currentMaxVelocity - 0.05f))
-            {
-                velocityX = -currentMaxVelocity;
-            }
-        }
-        //round to the currentMaxVelocity if within offset
-        else if (leftPressed && velocityX > -currentMaxVelocity && velocityX < (-currentMaxVelocity - 0.05f))
-        {
-            velocityX = -currentMaxVelocity;
-        }
-
-
-        //lock right
-        if (rightPressed && runPressed && velocityX > currentMaxVelocity)
-        {
-            velocityX = currentMaxVelocity;
-        }
-
-        //decelerate to the maximum walk velocity
-        else if (rightPressed && velocityX > currentMaxVelocity)
-        {
-            velocityX -= Time.deltaTime * deceleration;
-            //round to the currentMaxVelocity if within offset
-            if (velocityX > currentMaxVelocity && velocityX < (currentMaxVelocity - 0.05f))
-            {
-                velocityX = currentMaxVelocity;
-            }
-        }
-        //round to the currentMaxVelocity if within offset
-        else if (rightPressed && velocityX < currentMaxVelocity && velocityX > (currentMaxVelocity - 0.05f))
-        {
-            velocityX = currentMaxVelocity;
-        }
-
-
-
-    }
-
-
-
-
-
-
-
-    // Update is called once per frame
     void Update()
     {
+        bool forwardPressed, leftPressed, rightPressed, runPressed;
 
-
-
-
-        //get input from the player
-        bool forwardPressed = Input.GetKey(KeyCode.W);
-        bool runPressed = Input.GetKey(KeyCode.LeftShift);
-        bool leftPressed = Input.GetKey(KeyCode.A);
-        bool rightPressed = Input.GetKey(KeyCode.D);
-
-        //set current maxVelocity(ternary operator)
-        float currentMaxVelocity = runPressed ? maximumRunVelocity : maximumWalkVelocity;
-
-        //handles changes in velocity
-        changeVelocity(forwardPressed, leftPressed, rightPressed, runPressed, currentMaxVelocity);
-        lockOrResetVelocity(forwardPressed, leftPressed, rightPressed, runPressed, currentMaxVelocity);
-
-        //set parameters to local variable values
-        animator.SetFloat(VelocityZHash, velocityZ);
-        animator.SetFloat(VelocityXHash, velocityX);
-        
-        //Moves the character by script
-        if (characterController.isGrounded)
+        if (inputOverride)
         {
-            velocityY = 0f;
+            forwardPressed = overrideVertical > 0.1f;
+            leftPressed = overrideHorizontal < -0.1f;
+            rightPressed = overrideHorizontal > 0.1f;
+            runPressed = overrideRun;
         }
         else
         {
-            velocityY += gravity * Time.deltaTime;
+            forwardPressed = Input.GetKey(KeyCode.W);
+            leftPressed = Input.GetKey(KeyCode.A);
+            rightPressed = Input.GetKey(KeyCode.D);
+            runPressed = Input.GetKey(KeyCode.LeftShift);
         }
 
-        // Calculate movement with CharacterController
+        float currentMaxVelocity = runPressed ? maximumRunVelocity : maximumWalkVelocity;
+
+        // Z Axis Logic
+        if (forwardPressed && velocityZ < currentMaxVelocity)
+            velocityZ += Time.deltaTime * acceleration;
+        else if (!forwardPressed && velocityZ > 0.0f)
+            velocityZ -= Time.deltaTime * deceleration;
+        
+        if (!forwardPressed && velocityZ < 0.05f) velocityZ = 0.0f;
+
+        // X Axis Logic
+        if (leftPressed && velocityX > -currentMaxVelocity)
+            velocityX -= Time.deltaTime * acceleration;
+        else if (rightPressed && velocityX < currentMaxVelocity)
+            velocityX += Time.deltaTime * acceleration;
+        else if (!leftPressed && !rightPressed && velocityX != 0.0f)
+        {
+            if (velocityX > 0) velocityX -= Time.deltaTime * deceleration;
+            if (velocityX < 0) velocityX += Time.deltaTime * deceleration;
+            if (Mathf.Abs(velocityX) < 0.05f) velocityX = 0f;
+        }
+
+        animator.SetFloat(VelocityZHash, velocityZ);
+        animator.SetFloat(VelocityXHash, velocityX);
+        
+        if (characterController.isGrounded) velocityY = 0f;
+        else velocityY += gravity * Time.deltaTime;
+
         Vector3 movement = new Vector3(velocityX, velocityY, velocityZ);
-        
-        // Transform direction to world space if needed
         movement = transform.TransformDirection(movement);
-        
-        // Apply movement with CharacterController
         characterController.Move(movement * Time.deltaTime);
 
         IsRunning = runPressed && (forwardPressed || leftPressed || rightPressed);
 
-        /* if (Input.GetKeyDown(KeyCode.E))
-         {
-             Debug.Log("Wave triggered on: " + animator);
-             animator.SetTrigger("Wave");
-         } */
-
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!inputOverride && Input.GetKeyDown(KeyCode.E))
         {
             animator.SetTrigger("Wave");
-            Debug.Log("Wave triggered on: " + animator);
         }
     }
 }

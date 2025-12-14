@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|c:\\users\\oracle\\desktop\\games-middleware\\assets\\script\\multiplayer\\networkspherephysics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\multiplayer\\networkspherephysics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|c:\\users\\oracle\\desktop\\games-middleware\\assets\\script\\player scripts\\runningcamerashake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player scripts\\runningcamerashake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|C:\\Users\\oracle\\Desktop\\Games-Middleware\\assets\\script\\player scripts\\footstepmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player scripts\\footstepmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|C:\\Users\\oracle\\Desktop\\Games-Middleware\\assets\\script\\player scripts\\twodimensionalstatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player scripts\\twodimensionalstatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|C:\\Users\\oracle\\Desktop\\Games-Middleware\\assets\\script\\player scripts\\headlookatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player scripts\\headlookatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|c:\\users\\oracle\\desktop\\games-middleware\\assets\\script\\multiplayer\\networkmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\multiplayer\\networkmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9FB6B858-8435-9490-47A0-086ECA4C8217}|Assembly-CSharp.csproj|C:\\Users\\oracle\\Desktop\\Games-Middleware\\assets\\script\\player scripts\\bodypickupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,74 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "NetworkSpherePhysics.cs",
-              "DocumentMoniker": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Multiplayer\\NetworkSpherePhysics.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Multiplayer\\NetworkSpherePhysics.cs",
-              "ToolTip": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Multiplayer\\NetworkSpherePhysics.cs",
-              "RelativeToolTip": "Assets\\Script\\Multiplayer\\NetworkSpherePhysics.cs",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "NetworkManager.cs",
+              "DocumentMoniker": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Multiplayer\\NetworkManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Multiplayer\\NetworkManager.cs",
+              "ToolTip": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Multiplayer\\NetworkManager.cs",
+              "RelativeToolTip": "Assets\\Script\\Multiplayer\\NetworkManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T12:38:43.906Z",
+              "WhenOpened": "2025-12-13T00:03:20.231Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "twoDimensionalStateController.cs",
-              "DocumentMoniker": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Player Scripts\\twoDimensionalStateController.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player Scripts\\twoDimensionalStateController.cs",
-              "ToolTip": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Player Scripts\\twoDimensionalStateController.cs",
-              "RelativeToolTip": "Assets\\Script\\Player Scripts\\twoDimensionalStateController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T10:23:07.651Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RunningCameraShake.cs",
-              "DocumentMoniker": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Player Scripts\\RunningCameraShake.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player Scripts\\RunningCameraShake.cs",
-              "ToolTip": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Player Scripts\\RunningCameraShake.cs",
-              "RelativeToolTip": "Assets\\Script\\Player Scripts\\RunningCameraShake.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T15:03:12.458Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FootstepManager.cs",
-              "DocumentMoniker": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Player Scripts\\FootstepManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player Scripts\\FootstepManager.cs",
-              "ToolTip": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Player Scripts\\FootstepManager.cs",
-              "RelativeToolTip": "Assets\\Script\\Player Scripts\\FootstepManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T17:27:40.518Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "HeadLookAtController.cs",
-              "DocumentMoniker": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Player Scripts\\HeadLookAtController.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player Scripts\\HeadLookAtController.cs",
-              "ToolTip": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Player Scripts\\HeadLookAtController.cs",
-              "RelativeToolTip": "Assets\\Script\\Player Scripts\\HeadLookAtController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T16:39:48.68Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "BodyPickupController.cs",
               "DocumentMoniker": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Player Scripts\\BodyPickupController.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Player Scripts\\BodyPickupController.cs",
               "ToolTip": "C:\\Users\\oracle\\Desktop\\Games-Middleware\\Assets\\Script\\Player Scripts\\BodyPickupController.cs",
               "RelativeToolTip": "Assets\\Script\\Player Scripts\\BodyPickupController.cs",
-              "ViewState": "AgIAAIwCAAAAAAAAAAAuwKUCAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAJQCAAAAAAAAAAAUwKkCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-29T15:50:12.271Z"
             }

@@ -1,142 +1,43 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 
-public class HeadLookAtController : MonoBehaviour
+public class HeadLookAt : MonoBehaviour
 {
-    [Header("Head Rig Settings")]
-    [SerializeField] private MultiAimConstraint headRig;
-    [SerializeField] private Transform headTarget;
-    [SerializeField] private string[] interestPointTags = { "InterestPoint" };
-    [SerializeField] private float lookAtDistance = 10f;
-    [SerializeField] private float lookAtAngle = 60f;
-    [SerializeField] private float weightTransitionSpeed = 2f;
+    public Transform target;
+    public float maxYaw = 55f;
+    public float maxPitch = 30f;
 
-    [Header("Head Movement")]
-    [SerializeField] private float maxHeadTurnAngle = 80f;
-    [SerializeField] private float smoothTime = 0.3f;
-    [SerializeField] private Vector3 targetRotationOffset = new Vector3(0f, 180f, 0f);
+    //  
+    public Vector3 axisOffset = new Vector3(0f, 180f, 0f);
 
-    private Transform _currentInterestPoint;
-    private float _currentWeight = 0f;
-    private Vector3 _smoothedLookPosition;
-    private Vector3 _lookVelocity;
-
-    // Cache interest points for better performance
-    private readonly List<Transform> _cachedInterestPoints = new List<Transform>();
-    private float _cacheRefreshTimer = 0f;
-    private readonly float _cacheRefreshInterval = 1f;
-
-    void Start()
+    private void LateUpdate()
     {
-        if (headTarget == null)
-        {
-            Debug.LogError("Head target not assigned!");
-            enabled = false;
-            return;
-        }
+        if (target == null || transform.parent == null) return;
 
-        _smoothedLookPosition = headTarget.position;
-        RefreshInterestPointCache();
-    }
+        Vector3 dir = target.position - transform.position;
+        if (dir.sqrMagnitude < 0.0001f) return;
 
-    void Update()
-    {
-        if (headRig == null || headTarget == null) return;
+        // World look rotation
+        Quaternion targetRot = Quaternion.LookRotation(dir);
 
-        // Periodically refresh the interest point cache
-        _cacheRefreshTimer += Time.deltaTime;
-        if (_cacheRefreshTimer >= _cacheRefreshInterval)
-        {
-            RefreshInterestPointCache();
-            _cacheRefreshTimer = 0f;
-        }
+        // Convert to parent local space
+        Quaternion localRot =
+            Quaternion.Inverse(transform.parent.rotation) * targetRot;
 
-        FindInterestPoint();
-        UpdateHeadLookAt();
-    }
+        // Apply axis correction
+        localRot *= Quaternion.Euler(axisOffset);
 
-    private void RefreshInterestPointCache()
-    {
-        _cachedInterestPoints.Clear();
-        foreach (string tag in interestPointTags)
-        {
-            GameObject[] points = GameObject.FindGameObjectsWithTag(tag);
-            foreach (GameObject point in points)
-            {
-                if (point != null && point != gameObject)
-                {
-                    _cachedInterestPoints.Add(point.transform);
-                }
-            }
-        }
-    }
+        Vector3 euler = localRot.eulerAngles;
 
-    private void FindInterestPoint()
-    {
-        Transform closestPoint = null;
-        float closestDistance = float.MaxValue;
+        // Normalize angles
+        euler.x = (euler.x > 180f) ? euler.x - 360f : euler.x;
+        euler.y = (euler.y > 180f) ? euler.y - 360f : euler.y;
 
-        // Find the closest valid interest point
-        foreach (Transform point in _cachedInterestPoints)
-        {
-            if (point == null) continue;
+        euler.z = 0f;
 
-            float distance = Vector3.Distance(transform.position, point.position);
-            if (distance <= lookAtDistance && IsWithinViewAngle(point))
-            {
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    closestPoint = point;
-                }
-            }
-        }
+        // Clamp
+        euler.x = Mathf.Clamp(euler.x, -maxPitch, maxPitch);
+        euler.y = Mathf.Clamp(euler.y, -maxYaw, maxYaw);
 
-        _currentInterestPoint = closestPoint;
-    }
-
-    private bool IsWithinViewAngle(Transform target)
-    {
-        Vector3 directionToTarget = (target.position - transform.position).normalized;
-        float angle = Vector3.Angle(transform.forward, directionToTarget);
-        return angle <= lookAtAngle;
-    }
-
-    private void UpdateHeadLookAt()
-    {
-        if (_currentInterestPoint != null)
-        {
-            // Smoothly increase look-at weight when target is found
-            _currentWeight = Mathf.MoveTowards(_currentWeight, 1f, weightTransitionSpeed * Time.deltaTime);
-
-            Vector3 targetPosition = _currentInterestPoint.position;
-            Vector3 directionToTarget = (targetPosition - transform.position).normalized;
-
-            // Apply rotation offset to adjust look direction
-            Quaternion offsetRotation = Quaternion.Euler(targetRotationOffset);
-            Vector3 offsetDirection = offsetRotation * directionToTarget;
-
-            float distance = Vector3.Distance(transform.position, targetPosition);
-            Vector3 adjustedTargetPosition = transform.position + offsetDirection * distance;
-
-            // Smoothly move the look target position
-            _smoothedLookPosition = Vector3.SmoothDamp(_smoothedLookPosition, adjustedTargetPosition, ref _lookVelocity, smoothTime);
-
-            headTarget.position = _smoothedLookPosition;
-        }
-        else
-        {
-            // Smoothly return to neutral position when no target
-            _currentWeight = Mathf.MoveTowards(_currentWeight, 0f, weightTransitionSpeed * Time.deltaTime);
-
-            Vector3 neutralPosition = transform.position + transform.forward * 2f + transform.up * 0.5f;
-            _smoothedLookPosition = Vector3.SmoothDamp(_smoothedLookPosition, neutralPosition, ref _lookVelocity, smoothTime);
-            headTarget.position = _smoothedLookPosition;
-        }
-
-        // Apply the calculated weight to the head rig
-        if (headRig != null)
-            headRig.weight = _currentWeight;
+        transform.localRotation = Quaternion.Euler(euler);
     }
 }
